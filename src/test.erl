@@ -42,17 +42,46 @@ hello(#person{height = Height} = Sun,Age)->
 
 
 %%%%%%%%%%%%%%% 第二部分 函数递归 %%%%%%%%%%%%%%%
+
+% 阶乘
 fac(1) ->
   1;
 
 fac(N) ->
   N*fac(N-1).
 
+% 求和, | 符号用来切分列表
+total_sum([]) ->
+  0;
+
+total_sum([First|Rest]) ->
+  First+total_sum(Rest).
+
 %%%%%%%%%%%%%%% 第二部分 函数递归 %%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%% 第三部分 map %%%%%%%%%%%%%%%
+getmap(Username,Password) ->
+  #{
+    name => Username,
+    pass => Password
+  }.
+
+% 使用 := 匹配map中的name对应的值，并将其赋值到User变量中
+alpha(#{name := User}) ->
+  io:format("Username is: ~p ~n",[User]).
+%%%%%%%%%%%%%%% 第三部分 map %%%%%%%%%%%%%%%
 
 
 
 hello_world() ->
   Sun = #person{name = "sunxu",height = 178,sex = "man"},
   hello(Sun,18),
-  io:format("Factorial result: ~p ~n",[fac(7)]).
+
+  io:format("Factorial result: ~p ~n",[fac(7)]),
+
+  io:format("total sum is: ~p ~n",[total_sum([1,2,3,4,5])]),
+
+  alpha(getmap("sunxu","sunxu")).
+
