@@ -35,6 +35,7 @@ hello(#person{height = Height} = Sun,Age)->
   io:format("Person  is : ~p ~n", [ Sex ]),
   io:format("Person  is : ~p ~n", [ Sun ]),
   io:format("Person  is : ~p ~n", [ Jing ]),
+  compare(ping_timeout),
   Jing.
 
 %%%%%%%%%%%%%%% 第一部分 record type spec %%%%%%%%%%%%%%%
@@ -72,6 +73,17 @@ getmap(Username,Password) ->
 alpha(#{name := User}) ->
   io:format("Username is: ~p ~n",[User]).
 %%%%%%%%%%%%%%% 第三部分 map %%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%% 第四部分 atom %%%%%%%%%%%%%%%
+compare(Reason) ->
+  if
+    Reason =:= ping_timeout ->
+      io:format("Reason is: ~p ~n",[Reason]);
+    Reason =/= ping_timeout ->
+      io:format("Reason is unknown : ~p ~n",[Reason])
+  end.
+
+%%%%%%%%%%%%%%% 第四部分 atom %%%%%%%%%%%%%%%
 
 
 
